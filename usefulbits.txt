@@ -1,10 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+class Game < ActiveRecord::Base
+  validates :diff, inclusion: { in: %w(1 2 3 4 5), message: "1-5"
+  belongs_to :user, class_name: 'User', foreign_key: 'user_id'
+  belongs_to :user, class_name: 'User', foreign_key: 'opponent_id'
+  has_many :moves
+end
+
+
 u1 = User.create!( name: 'Alex')
 u2 = User.create!( name: 'Gerry')
 u3 = User.create!( name: 'Barry')
@@ -25,3 +26,16 @@ m8 = g2.moves.create!(number: 8, value: 'X', user_id: 1)
 #email: 'a@a.com')
 #email: 'g@g.com'
 # email: 'b@b.com'
+
+class User < ActiveRecord::Base
+validates :name, uniqueness: true
+has_many :Games
+end
+
+
+class Move < ActiveRecord::Base
+  validates :value, inclusion: { in: %w(0 X), message: "Xor0 Xor0 Xor0 !!!!!"}
+  validates :number, inclusion: { in: (0...9).to_a}
+  belongs_to :game
+end
+
