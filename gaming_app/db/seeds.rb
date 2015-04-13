@@ -5,3 +5,20 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+#   -------------------------------------------------------
+#
+#  ***Add some seeds for the Noughts and Crosses Game.****
+#
+u1 = User.create( name: 'Alex', email: 'a@a.com')
+u2 = User.create( name: 'Gerry', email: 'g@g.com')
+u3 = User.create( name: 'Barry', email: 'b@b.com')
+
+
+
+
+
+
+
+
+
+
