@@ -12,7 +12,6 @@ u3 = User.create!( name: 'Barry')
 g1 = Game.create!( user_id: u1.id, opponent_id: u2.id, diff: 1, result: 'w')
 g2 = Game.create!( user_id: u3.id, opponent_id: u2.id, diff: 1, result: 'w')
 
-
 m1 = g1.moves.create!(number: 1, value: 'X', user_id: 1)
 m2 = g1.moves.create!(number: 2, value: '0', user_id: 1)
 m3 = g1.moves.create!(number: 3, value: 'X', user_id: 1)
