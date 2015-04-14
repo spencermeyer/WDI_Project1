@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 
-<p><%= @game.whosmove  %></p>
+<!-- <p>whosmove is <%= @game.whosmove  %></p> -->
 
 <p>
   <strong>User:</strong>
@@ -23,23 +23,39 @@
   <%= @game.result %>
 </p>
 
-<table class="nactable"style="width:100%">
-  <tr>
-    <td>x</td>
-    <td>x</td> 
-    <td>x</td>
-  </tr>
-  <tr>
-    <td>x</td>
-    <td>x</td> 
-    <td>x</td>
-  </tr>
-  <tr>
-    <td>x</td>
-    <td>x</td> 
-    <td>x</td>
-  </tr>
+<p>
+  <strong>GameNumber:</strong>
+  <%= @game.id %>
+</p>
+
+<table>
+<% table = (0..8).to_a %>
+<% table.each_slice(3) do |slice| %>
+<tr>
+  <% slice.each do |cell| %>
+  <td>
+    <% if @game.moves.find_by_number(cell) && @game.moves.find_by_number(cell).user_id == @game.user_id %>
+    <%= "x" %>
+    <% elsif @game.moves.find_by_number(cell) && @game.moves.find_by_number(cell).user_id == @game.opponent_id %>
+    <%= "o" %>
+    <% else %>
+    <%= " " %>
+    <% end %>
+  </td>
+  <% end %>
+</tr>
+<% end %>
+  
 </table>
+
+
+
+
+
+
+
+
+
 
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %>

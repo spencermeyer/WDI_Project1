@@ -8,8 +8,6 @@ class Game < ActiveRecord::Base
   def whosmove
     Move.last.try(:value)
 
-
-
   end
 
 

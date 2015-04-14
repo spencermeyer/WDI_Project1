@@ -14,28 +14,55 @@
 
 <body>
 
-  <div class="icon-bar five-up">
-    <a href='/' class="item">
-      <img src="../assets/images/fi-home.svg" >
-      <label>Home</label>
-    </a>
-    <a href='/games'class="item">
-      <img src="../assets/img/images/fi-bookmark.svg" >
-      <label>Game</label>
-    </a>
-    <a class="item">
-      <img src="../assets/img/images/fi-info.svg" >
-      <label>Info</label>
-    </a>
-    <a class="item">
-      <img src="../assets/img/images/fi-mail.svg" >
-      <label>Mail</label>
-    </a>
-    <a class="item">
-      <img src="../assets/img/images/fi-like.svg" >
-      <label>Like</label>
-    </a>
+  <!-- <div class="icon-bar five-up"> -->
+    <!-- <a class="item" href="/"> -->
+      <!-- <img src="../assets/img/images/fi-home.svg" > -->
+      <!-- <label>Home</label> -->
+    <!-- </a> -->
+    <!-- <a class="item" href="/games"> -->
+      <!-- <img src="../assets/img/images/fi-bookmark.svg" > -->
+      <!-- <label>Games</label> -->
+    <!-- </a> -->
+    <!-- <a class="item" href="/users/sign_up"> -->
+      <!-- <img src="../assets/img/images/fi-info.svg" > -->
+      <!-- <label>New User</label> -->
+    <!-- </a> -->
+  <!-- </div> -->
+
+  <div>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/games">Play Game</a></li>
+        <li><a href="/users">All Users</a></li>
+      </ul>
+      <ul>
+        <% if user_signed_in? %>
+        <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+        <% else %>
+        <li><%= link_to "Login", new_user_session_path %></li>
+        <li><%= link_to "Create an account", new_user_registration_path %></li>
+        <% end %>
+      </ul>
+    </nav>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <%= yield %>
 
