@@ -1,33 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <table>
-  <% @table.each_slice(3) do |slice| %>
-  <tr>
-    <% slice.each do |cell| %>
-    <td>
-      <% if @game.moves.find_by_number(cell) && @game.moves.find_by_number(cell).user_id == @game.user_id %>
-        X
-      <% elsif @game.moves.find_by_number(cell) && @game.moves.find_by_number(cell).user_id == @game.opponent_id %>
-        O
-      <% else %>
-      <%= link_to "EMPTY", moves_path(game_id: @game.id, number:cell, user_id:current_user.id), method: :post %>
+  <% (0..8).to_a.each_slice(3) do |slice| %>
+    <tr>
+      <% slice.each do |cell| %>
+        <td>
+          <% if @game.moves.find_by_number(cell) %>
+            <%= @game.moves.find_by_number(cell).value %>
+          <% else %>
+            <%= link_to "EMPTY", moves_path(game_id: @game.id, number: cell, user_id: current_user.id, value: @game.next_value), method: :post %>
+          <% end %>
+        </td>
       <% end %>
-    </td>
-    <% end %>
-  </tr>
-
+    </tr>
   <% end %>
-  
 </table>
 
+<p>User: <%= @game.user.email %></p>
+<p>Opp: <%= @game.opponent.email %></p>
+<p>Num: <%= @game.winner %></p>
 
-
-
-
-
-
-
-
-
-<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= link_to 'Edit', edit_game_path(@game) %>
 <%= link_to 'Back', games_path %>
