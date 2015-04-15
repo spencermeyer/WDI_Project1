@@ -1,27 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-
- <!-- <p>whosmove is <%= #@game.whosmove  %></p> -->
-
-
 <table>
-<% table = (0..8).to_a %>
-<% table.each_slice(3) do |slice| %>
-<tr>
-  <% slice.each do |cell| %>
-  <td>
-    <% if @game.moves.find_by_number(cell) && @game.moves.find_by_number(cell).user_id == @game.user_id %>
-    <%= "x" %>
-    <% elsif @game.moves.find_by_number(cell) && @game.moves.find_by_number(cell).user_id == @game.opponent_id %>
-    <%= "o" %>
-    <% else %>
-    <%= link_to "EMPTY", moves_path(game_id: @game.id, number:cell, user_id:current_user.id), method: :post %>
+  <% @table.each_slice(3) do |slice| %>
+  <tr>
+    <% slice.each do |cell| %>
+    <td>
+      <% if @game.moves.find_by_number(cell) && @game.moves.find_by_number(cell).user_id == @game.user_id %>
+        X
+      <% elsif @game.moves.find_by_number(cell) && @game.moves.find_by_number(cell).user_id == @game.opponent_id %>
+        O
+      <% else %>
+      <%= link_to "EMPTY", moves_path(game_id: @game.id, number:cell, user_id:current_user.id), method: :post %>
+      <% end %>
+    </td>
     <% end %>
-  </td>
-  <% end %>
-</tr>
+  </tr>
 
-<% end %>
+  <% end %>
   
 </table>
 

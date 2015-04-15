@@ -11,6 +11,7 @@ class GamesController < ApplicationController
   # GET /games/1.json
   def show
     @game.whosmove
+    @table = (0..8).to_a
   end
 
   # GET /games/new
