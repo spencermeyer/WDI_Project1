@@ -23,29 +23,28 @@ class Game < ActiveRecord::Base
       i+=1
     end
     #test for matches to winning combinations
-    i=0
     j=0
     k=0
     while j<8
+      indicatorx = 0
+      indicator0 = 0
       while k<3
-        indicatorx = 0
-        indicator0 = 0
         if testx.include?(winning_combinations[j][k]) && result = moves.find_by_number(j).try(:value) == 'x'
           indicatorx=indicatorx+1
         elsif testx.include?(winning_combinations[j][k]) && result = moves.find_by_number(j).try(:value) == 'o'
           indicator0=indicator0+1
         end
-        if(indicatorx>maxindicatorx)
-          maxindicatorx = indicatorx
-        end
-        if(indicator0>maxindicator0)
-          maxindicator0 = indicator0
-        end
         k+=1
+      end
+      if(indicatorx>maxindicatorx)
+        maxindicatorx = indicatorx
+      end
+      if(indicator0>maxindicator0)
+        maxindicator0 = indicator0
       end
       j+=1
     end
-    maxindicatorx
+    maxindicator0
   end
 
 
