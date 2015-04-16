@@ -27,6 +27,8 @@ body {
   height: 150px;
   left: 310px;
   font-size: 100px;
+  text-align: center;
+  font-family: "Comic Sans MS";
 }
 .cncell
 {
@@ -37,6 +39,7 @@ input{
   background-color: white;
   border-color: white
   size: large;
+  align: middle;
 }
 
 

@@ -44,7 +44,7 @@ class Game < ActiveRecord::Base
       end
       j+=1
     end
-    maxindicator0
+    maxindicatorx
   end
 
 
