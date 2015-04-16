@@ -10,15 +10,15 @@ class Game < ActiveRecord::Base
 
   def winner
     win=3
-    indicator=0
     maxindicatorx=0
     maxindicator0=0
+    message = ""
     winning_combinations = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
-    test = [" "," "," "," "," "," "," "," "," "]
+    testx = [" "," "," "," "," "," "," "," "," "]
     i=0
     while i<9
       if (moves.find_by_number(i).present?)
-        test[i] = moves.find_by_number(i).number
+        testx[i] = moves.find_by_number(i).number
       end
       i+=1
     end
@@ -28,26 +28,26 @@ class Game < ActiveRecord::Base
     k=0
     while j<8
       while k<3
-        if test.include?(winning_combinations[j][k])
-          indicator=indicator+1
-          if(indicator>maxindicator)
-            maxindicatorx = indicator
-          end
+        indicatorx = 0
+        indicator0 = 0
+        if testx.include?(winning_combinations[j][k]) && result = moves.find_by_number(j).try(:value) == 'x'
+          indicatorx=indicatorx+1
+        elsif testx.include?(winning_combinations[j][k]) && result = moves.find_by_number(j).try(:value) == 'o'
+          indicator0=indicator0+1
+        end
+        if(indicatorx>maxindicatorx)
+          maxindicatorx = indicatorx
+        end
+        if(indicator0>maxindicator0)
+          maxindicator0 = indicator0
         end
         k+=1
       end
       j+=1
     end
-maxindicator=indicator
-indicator = 0
+    maxindicatorx
+  end
 
-maxindicatorx
-end
-
-
-
-# when player crosses have X cells that he played
-    # find the index of the cells he played, then compare the index to the winning_combinations 
 
   # First move is always x
   def next_value
@@ -65,7 +65,4 @@ end
     moves.last.value
   end
 end
-
-
-
 
