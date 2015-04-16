@@ -1,0 +1,29 @@
+<body>
+  <div class="icon-bar five-up">
+    <a class="home" href="/">
+      <%= image_tag('fi-home.svg') %>
+      <label>Home</label>
+    </a>
+    <% if user_signed_in? %>
+    <a class="Games" href="/games">
+      <%= image_tag('noughts1.jpg') %>
+      <label>Games</label>
+    </a>
+    <a>
+      <%= link_to image_tag('Logout.png'), destroy_user_session_path, method: :delete %> >
+    </a>
+    <a>
+    <%= link_to image_tag('Edit.png'), edit_user_registration_path %> 
+    <a/>
+      <% else %>
+      <li><%= link_to "Login", new_user_session_path %></li>
+      <img src="../assets/img/images/fi-like.svg" >
+      <label>Login</label>
+    </a>
+    <a class="Create" <% link_to "Create an account", new_user_registration_path %>  >
+      <img src="../assets/img/images/fi-like.svg" >
+      <label>Create</label>
+    </a>
+    <% end %>
+  </div>
+  <%= yield %>
