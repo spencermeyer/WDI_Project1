@@ -9,24 +9,40 @@ class Game < ActiveRecord::Base
   end
 
   def winner
+    win=3
+    indicator=0
+    maxindicatorx=0
+    maxindicator0=0
     winning_combinations = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
-    test = []
+    test = [" "," "," "," "," "," "," "," "," "]
     i=0
-    while i<8
+    while i<9
       if (moves.find_by_number(i).present?)
-        test[i] = moves.find_by_number(i).value
+        test[i] = moves.find_by_number(i).number
       end
       i+=1
     end
-  while i<8
+    #test for matches to winning combinations
+    i=0
+    j=0
+    k=0
+    while j<8
+      while k<3
+        if test.include?(winning_combinations[j][k])
+          indicator=indicator+1
+          if(indicator>maxindicator)
+            maxindicatorx = indicator
+          end
+        end
+        k+=1
+      end
+      j+=1
+    end
+maxindicator=indicator
+indicator = 0
 
-
-
-
-    test
-  end
-  
-
+maxindicatorx
+end
 
 
 
