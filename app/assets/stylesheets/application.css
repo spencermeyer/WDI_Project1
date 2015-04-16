@@ -17,7 +17,6 @@
 body {
   background-image: url('Bubbles_background.jpg');
 }
-
  table {
    position: fixed;
    left: 150px;
@@ -29,8 +28,16 @@ body {
   left: 310px;
   font-size: 100px;
 }
-
-
+.cncell
+{
+  color:red;
+}
+input{
+  color: black;
+  background-color: white;
+  border-color: white
+  size: large;
+}
 
 
 
