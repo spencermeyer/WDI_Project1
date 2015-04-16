@@ -15,19 +15,19 @@
  *= require foundation_and_overrides
  */
 body {
-
+  background-image: url('Bubbles_background.jpg');
 }
 
  table {
    position: fixed;
-   left: 100px;
+   left: 150px;
  }
  table, th, td {
   border: 1px solid black;
   width: 300px;
   height: 100px;
-  left: 200px;
-  font-size: 50px;
+  left: 310px;
+  font-size: 100px;
 }
 
 
