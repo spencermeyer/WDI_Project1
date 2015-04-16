@@ -26,36 +26,30 @@
     <%= link_to image_tag('Logout.png'), destroy_user_session_path, method: :delete %> >
     <%= link_to image_tag('Edit.png'), edit_user_registration_path %> 
     <% else %>
-    <li><%= link_to "Login", new_user_session_path %></li>
-    <img src="../assets/img/images/fi-like.svg" >
-    <label>Login</label>
-  </a>
-  <a class="Create" <% link_to "Create an account", new_user_registration_path %>  >
-    <img src="../assets/img/images/fi-like.svg" >
-    <label>Create</label>
-  </a>
-  <% end %>
-</div>
-<%= yield %>
+    <%= link_to image_tag("LoginIcon.jpg"), new_user_session_path %>
+    <%= link_to image_tag('register.png'), new_user_registration_path %>
+    <% end %>
+  </div>
+  <%= yield %>
 
-<!-- <div> -->
-<!-- <nav> -->
-<!-- <ul> -->
-<!-- <li><a href="/">Home</a></li> -->
-<!-- <li><a href="/games">Play Game</a></li> -->
-<!-- <li><a href="/users">All Users</a></li> -->
-<!-- </ul> -->
-<!-- <ul> -->
-<!-- <% if user_signed_in? %> -->
-<!-- <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li> -->
-<!-- <li><%= link_to "Edit Profile", edit_user_registration_path %></li> -->
-<!-- <% else %> -->
-<!-- <li><%= link_to "Login", new_user_session_path %></li> -->
-<!-- <li><%= link_to "Create an account", new_user_registration_path %></li> -->
-<!-- <% end %> -->
-<!-- </ul> -->
-<!-- </nav> -->
-<!-- </div> -->
+  <!-- <div> -->
+  <!-- <nav> -->
+  <!-- <ul> -->
+  <!-- <li><a href="/">Home</a></li> -->
+  <!-- <li><a href="/games">Play Game</a></li> -->
+  <!-- <li><a href="/users">All Users</a></li> -->
+  <!-- </ul> -->
+  <!-- <ul> -->
+  <!-- <% if user_signed_in? %> -->
+  <!-- <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li> -->
+  <!-- <li><%= link_to "Edit Profile", edit_user_registration_path %></li> -->
+  <!-- <% else %> -->
+  <!-- <li><%= link_to "Login", new_user_session_path %></li> -->
+  <!-- <li><%= link_to "Create an account", new_user_registration_path %></li> -->
+  <!-- <% end %> -->
+  <!-- </ul> -->
+  <!-- </nav> -->
+  <!-- </div> -->
 
 
 
